@@ -1,0 +1,26 @@
+node{
+    stage('scm checkout'){
+         git 'https://github.com/sruthiyelti/mahalogin.git'
+    }
+    stage('mvn package'){
+        sh label: '', script: 'mvn package'
+    }
+    stage('upload to nexus'){
+      nexusArtifactUploader artifacts: [
+          [
+              artifactId: 'mahaLogin',
+               classifier: '',
+               file: 'target/mahaLogin-1.0.0.war',
+               type: 'war'
+               ]
+               ], 
+               credentialsId: 'nexus3', 
+               groupId: 'com.maha', 
+               nexusUrl: '34.221.124.60:8081', 
+               nexusVersion: 'nexus3', 
+               protocol: 'http', 
+               repository: 'simpleapp-release', 
+               version: '1.0.0'
+    }
+  } 
+  
