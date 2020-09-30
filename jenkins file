@@ -24,7 +24,7 @@ pipeline
     {
         failure
         {
-            emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has FAILED", to: 'yeltisruthireddy@gmail.com'
+            emailext attachLog: true, body: "Please go to ${env.BUILD_URL} for more details.", subject: "Job ${env.JOB_NAME} - (${env.BUILD_NUMBER}) has failed", to: 'yeltisruthireddy@gmail.com'
         }
         success
         {
