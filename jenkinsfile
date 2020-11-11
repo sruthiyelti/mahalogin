@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+     
+    stages {
+      stage('checkout') {
+           steps {
+             
+                git 'https://github.com/sruthiyelti/mahalogin.git'
+          }
+        }
+        stage('code'){
+            steps {
+                withSonarQubeEnv(credentialsId: 'sonartoken') {
+               sh 'mvn package sonar:sonar'  
+   } 
+        
+   }
+       }
+           }
+}
